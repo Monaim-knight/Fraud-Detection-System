@@ -85,6 +85,35 @@ This project implements a complete fraud detection pipeline for Card-Not-Present
 
 ## 🚀 Quick Start
 
+### ⚡ One-Click Reproduction (For Recruiters)
+
+**Reproduce the entire pipeline with a single command:**
+
+```r
+# In R or RStudio:
+source("run_complete_pipeline.R")
+```
+
+Or from command line:
+```bash
+Rscript run_complete_pipeline.R
+```
+
+This single script will:
+- ✅ Install all required packages
+- ✅ Generate synthetic dataset (50,000 transactions)
+- ✅ Perform feature engineering (48 features)
+- ✅ Train 3 ML models (Logistic Regression, LightGBM, XGBoost)
+- ✅ Evaluate and compare models
+- ✅ Retrain with stable features
+- ✅ Create deployment package
+
+**Expected runtime**: ~10-15 minutes
+
+📖 See `QUICK_START.md` for detailed instructions and troubleshooting.
+
+---
+
 ### Prerequisites
 
 - **R** (version 4.0 or higher)
