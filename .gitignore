@@ -1,0 +1,137 @@
+# R-specific
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+*.Rproj
+*.Rproj.user
+.Rproj.user/
+*.Rcheck/
+.Rprofile
+
+# R Package Files
+*.tar.gz
+*.Rbuildignore
+*.Rinstignore
+
+# Data Files (Large datasets - add specific ones you want to track)
+*.csv
+!tableau_exports/*.csv
+!transactions_template.csv
+*.xlsx
+*.xls
+*.parquet
+*.feather
+
+# Model Files (Large - consider using Git LFS)
+*.rds
+*.rda
+*.h5
+*.hdf5
+*.pkl
+*.joblib
+models/**/*.txt
+models/**/*.rds
+models/**/*.rda
+
+# Output Directories
+output/
+results/
+logs/
+*.log
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Sensitive Information
+.env
+.env.local
+*.key
+*.pem
+*.p12
+config.ini
+secrets.yaml
+credentials.json
+
+# Build and Distribution
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Documentation Build
+docs/_build/
+site/
+
+# OneDrive
+~$*
+
+# Tableau
+*.twbx
+*.twb
+*.hyper
+
+# Large Dataset Directories
+cnp_dataset/creditcard.csv
+cnp_dataset/synthetic/
+cnp_dataset/feature_engineered/
+cnp_dataset/labeled/
+
+# External/Third-party repositories
+fraud-dataset-benchmark/
+
+# GitHub preparation files (no longer needed after upload)
+GITHUB_PREPARATION_SUMMARY.md
+GITHUB_UPLOAD_CHECKLIST.md
+GITHUB_REPO_DESCRIPTION.md
+FILES_TO_EXCLUDE.md
+REPOSITORY_CONTENTS_SUMMARY.md
+
+# Large CSV exports
+tableau_fraud_data.csv
+transactions_for_mysql.csv
+

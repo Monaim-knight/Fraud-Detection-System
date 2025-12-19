@@ -1,0 +1,34 @@
+# R Package Requirements for Fraud Detection System
+# Install using: install.packages(c("package1", "package2", ...))
+# Or use: lapply(readLines("R_requirements.txt"), install.packages)
+
+# Core Data Manipulation
+readr          # Fast CSV reading
+dplyr          # Data manipulation
+tidyr          # Data tidying
+lubridate      # Date/time handling
+
+# Machine Learning
+caret          # Classification and regression training
+pROC           # ROC curve analysis
+ROSE           # Handling class imbalance
+
+# Advanced ML Models
+lightgbm       # LightGBM gradient boosting
+xgboost        # XGBoost gradient boosting
+
+# Graph Analysis
+igraph         # Network analysis and graph features
+
+# Utilities
+DescTools      # Descriptive statistics
+stringr        # String manipulation
+
+# Optional: For installation from GitHub
+# devtools      # For installing packages from GitHub
+
+# Installation Notes:
+# - Some packages may require system dependencies
+# - LightGBM may need to be installed from GitHub if CRAN version doesn't work:
+#   devtools::install_github("Microsoft/LightGBM", subdir = "R-package")
+# - igraph may require additional system libraries on Linux/Mac
