@@ -43,49 +43,38 @@ This project implements a complete fraud detection pipeline for Card-Not-Present
 ## 🏗️ Project Structure
 
 ```
-.
-├── README.md                          # This file
-├── LICENSE                            # MIT License
-├── .gitignore                         # Git ignore rules
-├── R_requirements.txt                 # R package dependencies
+fraud-detection-system/
+├── README.md                    # Main documentation
+├── LICENSE                      # MIT License
+├── R_requirements.txt          # R package dependencies
 │
-├── data/                              # Data directory
-│   └── cnp_dataset/                   # CNP fraud dataset
+├── run_complete_pipeline.R     # ⭐ ONE-CLICK REPRODUCTION
 │
-├── scripts/                           # R scripts organized by stage
-│   ├── 01_data_cleaning/              # Data cleaning scripts
-│   ├── 02_feature_engineering/        # Feature engineering scripts
-│   ├── 03_model_training/            # Model training scripts
-│   ├── 04_evaluation/                # Model evaluation scripts
-│   ├── 05_deployment/                # Deployment scripts
-│   └── 06_tableau/                   # Tableau data preparation
+├── scripts/                    # Organized workflow scripts
+│   ├── data_preparation/        # Data generation & preparation
+│   ├── feature_engineering/     # Feature creation
+│   ├── model_training/          # Model training scripts
+│   ├── evaluation/              # Model evaluation
+│   ├── deployment/              # Deployment preparation
+│   └── tableau/                 # Tableau data preparation
 │
-├── models/                            # Trained models
-│   └── stable/                        # Production-ready models
+├── docs/
+│   ├── reports/                 # Analysis reports
+│   │   ├── Model_Training_Report.md
+│   │   ├── Evaluation_Report.md
+│   │   └── Deployment_Report.md
+│   └── guides/                  # User guides
+│       ├── QUICK_START.md
+│       └── TABLEAU_DASHBOARD_GUIDE.md
 │
-├── evaluation/                        # Evaluation results
-│   ├── comprehensive_metrics.csv
-│   ├── segment_analysis.csv
-│   └── temporal_validation.csv
-│
-├── deployment/                        # Deployment package
-│   ├── lightgbm_model.txt
-│   ├── features.txt
-│   ├── thresholds.csv
-│   ├── predict_fraud.R
-│   └── README.md
-│
-├── tableau_exports/                   # Data exports for Tableau
-│
-└── docs/                              # Documentation
-    ├── reports/                       # Analysis reports
-    ├── guides/                        # Step-by-step guides
-    └── troubleshooting/               # Troubleshooting guides
+├── deployment/                  # Production deployment package
+├── tableau_exports/             # Tableau data exports
+└── cnp_dataset/                 # Dataset directory (not tracked)
 ```
 
 ## 🚀 Quick Start
 
-### ⚡ One-Click Reproduction (For Recruiters)
+### ⚡ One-Click Reproduction
 
 **Reproduce the entire pipeline with a single command:**
 
@@ -99,239 +88,99 @@ Or from command line:
 Rscript run_complete_pipeline.R
 ```
 
-This single script will:
-- ✅ Install all required packages
-- ✅ Generate synthetic dataset (50,000 transactions)
-- ✅ Perform feature engineering (48 features)
-- ✅ Train 3 ML models (Logistic Regression, LightGBM, XGBoost)
-- ✅ Evaluate and compare models
-- ✅ Retrain with stable features
-- ✅ Create deployment package
+**What it does:**
+- ✅ Installs all required packages
+- ✅ Generates synthetic dataset (50,000 transactions)
+- ✅ Performs feature engineering (48 features)
+- ✅ Trains 3 ML models (Logistic Regression, LightGBM, XGBoost)
+- ✅ Evaluates and compares models
+- ✅ Retrains with stable features
+- ✅ Creates deployment package
 
 **Expected runtime**: ~10-15 minutes
 
-📖 See `QUICK_START.md` for detailed instructions and troubleshooting.
-
----
+📖 See [`docs/guides/QUICK_START.md`](docs/guides/QUICK_START.md) for detailed instructions.
 
 ### Prerequisites
 
-- **R** (version 4.0 or higher)
-- **RStudio** (recommended)
-- **MySQL** (optional, for database integration)
-- **Tableau** (optional, for dashboards)
+- **R** (version 4.0 or higher) - [Download](https://www.r-project.org/)
+- **RStudio** (recommended) - [Download](https://www.rstudio.com/products/rstudio/download/)
 
-### Installation
+## 📚 Documentation
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Monaim-Knight/fraud-detection-system.git
-   cd fraud-detection-system
-   ```
+### Reports
+- [`Model_Training_Report.md`](docs/reports/Model_Training_Report.md) - Model training process and results
+- [`Evaluation_Report.md`](docs/reports/Evaluation_Report.md) - Comprehensive model evaluation
+- [`Deployment_Report.md`](docs/reports/Deployment_Report.md) - Deployment preparation and validation
 
-2. **Install R packages:**
-   ```r
-   # Install required packages
-   install.packages(c(
-     "readr", "dplyr", "tidyr", "lubridate",
-     "caret", "pROC", "ROSE",
-     "lightgbm", "xgboost",
-     "igraph", "DescTools"
-   ))
-   ```
+### Guides
+- [`QUICK_START.md`](docs/guides/QUICK_START.md) - Step-by-step reproduction guide
+- [`TABLEAU_DASHBOARD_GUIDE.md`](docs/guides/TABLEAU_DASHBOARD_GUIDE.md) - Tableau dashboard setup
 
-   Or use the requirements file:
-   ```r
-   source("install_packages.R")  # If available
-   ```
+### Additional Documentation
+- [`PRODUCTION_DECISION_STRATEGY.md`](PRODUCTION_DECISION_STRATEGY.md) - Production decision framework
+- [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) - Detailed project organization
 
-3. **Download the dataset:**
-   - Place your CNP dataset in `cnp_dataset/creditcard.csv`
-   - Or use the synthetic dataset generation script
+## 🔧 Technical Details
 
-### Basic Usage
+### Models Implemented
 
-1. **Data Cleaning:**
-   ```r
-   source("clean_cnp_dataset.R")
-   ```
-
-2. **Feature Engineering:**
-   ```r
-   source("feature_engineering.R")
-   source("implement_placeholder_features.R")
-   ```
-
-3. **Model Training:**
-   ```r
-   source("train_fraud_models.R")
-   ```
-
-4. **Model Evaluation:**
-   ```r
-   source("evaluate_models.R")
-   ```
-
-5. **Deployment Preparation:**
-   ```r
-   source("retrain_stable_models.R")
-   source("deploy_models.R")
-   ```
-
-## 📈 Workflow
-
-### Stage 1: Data Collection & Cleaning
-- Dataset loading and validation
-- Missing value handling
-- Outlier detection and treatment
-- Data quality assessment
-
-### Stage 2: Feature Engineering
-- **Velocity Features**: Transaction frequency within time windows
-- **Identity Consistency**: Device reuse, IP-geo mismatch, email domain risk
-- **Graph Features**: Shared devices, shared addresses, network analysis
-- **Risk Flags**: High amount, unusual time, weekend, rapid transactions, prepaid cards, disposable emails, high-risk geography
-- **Temporal Features**: Day of month, week of month, rolling fraud rates
-
-### Stage 3: Model Training
-- **Logistic Regression**: Baseline interpretable model
-- **LightGBM**: High-performance gradient boosting (best model)
-- **XGBoost**: Alternative high-performance model
-- **Class Imbalance Handling**: Class weights and cost-sensitive learning
-- **Threshold Optimization**: Finding optimal decision threshold based on cost
-
-### Stage 4: Model Evaluation
-- **Comprehensive Metrics**: Accuracy, Precision, Recall, F1, ROC AUC, PR AUC
-- **Cost Analysis**: Expected cost saved, cost per transaction
-- **Segment Analysis**: Performance by geography, merchant, account age
-- **Temporal Validation**: Walk-forward validation on future data
-
-### Stage 5: Deployment
-- Model stability analysis
-- Feature selection (48 stable features)
-- Production-ready model packaging
-- Monitoring setup
-- Real-world testing
-
-### Stage 6: Dashboard Creation
-- **Tableau Dashboards**: Interactive fraud monitoring
-- **Metrics**: Fraud capture rate, false positive rate, PSI monitoring
-- **Case Queue**: Operations team overview
-
-## 🔬 Technical Details
-
-### Model Architecture
-
-**LightGBM (Best Model):**
-- Algorithm: Gradient Boosting Decision Tree
-- Class weights: Balanced for fraud class
-- Optimal threshold: 0.170
-- Features: 48 stable features
-- Performance: 60.19% recall, 41.61% precision
+1. **Logistic Regression** - Baseline model with interpretable coefficients
+2. **LightGBM** - Gradient boosting (best performing model)
+3. **XGBoost** - Alternative gradient boosting implementation
 
 ### Feature Engineering
 
-**48 Engineered Features:**
-- 28 Original features (V1-V28, Time, Amount)
-- 7 Risk flags
-- 3 Velocity features
-- 3 Identity consistency features
-- 3 Graph features
-- 4 Temporal features
+- **Velocity Features**: Transaction frequency in 10m/1h/24h windows
+- **Identity Consistency**: Device reuse, IP-geo mismatch, email domain risk
+- **Risk Flags**: Prepaid cards, high-risk geography, disposable emails
+- **Temporal Features**: Time of day, day of week, weekend flags
+- **Amount Features**: High-amount flags, normalized amounts
 
-### Cost-Sensitive Optimization
+### Evaluation Metrics
 
-- **Cost of False Negative**: 10 units (missing fraud)
-- **Cost of False Positive**: 1 unit (false alarm)
-- **Optimization Goal**: Minimize total expected cost
-- **Result**: 81.14% cost savings
+- **Cost-Sensitive Metrics**: Total cost, cost per transaction
+- **Classification Metrics**: Precision, Recall, F1-Score, ROC AUC, PR AUC
+- **Business Metrics**: Cost saved, cost saved percentage
+- **Segment Analysis**: Performance by merchant, geography, account age
+- **Temporal Validation**: Walk-forward validation for stability
 
-## 📊 Monitoring & Dashboards
+## 🎯 Use Cases
 
-### Tableau Dashboards
+- **Real-time Fraud Detection**: Score transactions in production
+- **Fraud Monitoring**: Track fraud rates and model performance
+- **Case Management**: Review queue for flagged transactions
+- **Model Monitoring**: Detect concept drift and performance degradation
 
-1. **Fraud Capture Rate Dashboard**
-   - Blocked fraud / Total fraud
-   - Target: >95%
-   - Color-coded alerts
+## 📈 Performance Highlights
 
-2. **False Positive Rate Dashboard**
-   - Blocked legitimate / Total legitimate
-   - Target: <5%
-   - Trend analysis
-
-3. **Drift Monitoring Dashboard**
-   - Population Stability Index (PSI)
-   - Feature distribution shifts
-   - Alert thresholds
-
-4. **Case Queue Overview**
-   - Operations team dashboard
-   - Pending cases
-   - Priority assignments
-   - Analyst workload
-
-## 📝 Documentation
-
-Comprehensive documentation is available in the `docs/` directory:
-
-- **Reports**: Detailed analysis reports for each stage
-- **Guides**: Step-by-step implementation guides
-- **Troubleshooting**: Common issues and solutions
-
-Key documents:
-- `docs/reports/Model_Training_Report.md`
-- `docs/reports/Evaluation_Report.md`
-- `docs/reports/Deployment_Report.md`
-- `docs/guides/TABLEAU_DASHBOARD_BUILDING_GUIDE.md`
-
-## 🧪 Testing
-
-### Unit Testing
-```r
-# Test deployment package
-source("deployment/test_deployment.R")
-```
-
-### Real Data Testing
-```r
-# Test with real transaction data
-source("test_with_real_data.R")
-```
+- **81.14% cost savings** compared to baseline
+- **60.19% fraud recall** (catches majority of fraud)
+- **0.9930 ROC AUC** (excellent discrimination)
+- **0.9098 PR AUC** (strong precision-recall balance)
+- **Production-ready** with monitoring and deployment package
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution guidelines.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [`LICENSE`](LICENSE) file for details.
 
 ## 👤 Author
 
 **Islam Md Monaim**
-- GitHub: [@Monaim-Knight](https://github.com/Monaim-Knight)
-- LinkedIn: [Md Monaim Islam](https://www.linkedin.com/in/md-monaim-islam-295928161/)
+
+- GitHub: [@Monaim-Knight](https://github.com/Monaim-knight)
+- LinkedIn: [md-monaim-islam](https://www.linkedin.com/in/md-monaim-islam-295928161/)
 
 ## 🙏 Acknowledgments
 
-- Credit Card Fraud Detection Dataset (CNP Dataset)
-- LightGBM and XGBoost communities
-- Tableau for visualization tools
-
-## 📚 References
-
-- [LightGBM Documentation](https://lightgbm.readthedocs.io/)
-- [XGBoost Documentation](https://xgboost.readthedocs.io/)
-- [Tableau Documentation](https://help.tableau.com/)
+- Credit Card Fraud Detection dataset
+- R community for excellent ML packages
+- Tableau for visualization capabilities
 
 ---
 
-**Note**: This project is for educational and portfolio purposes. For production use, ensure proper security measures, data privacy compliance, and thorough testing.
-
+**⭐ Star this repository if you find it useful!**
