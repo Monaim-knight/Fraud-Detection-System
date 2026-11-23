@@ -1,4 +1,11 @@
-# Card-not-present fraud decision study
+<img width="1527" height="2268" alt="image" src="https://github.com/user-attachments/assets/01473a19-ecd0-497c-8da6-76dc0bfa5696" /># Card-not-present fraud decision study
+## Executive Decision Summary
+
+### Business Decision
+
+This project evaluates whether a risk score can prioritize card-not-present transactions for **human fraud review** rather than automatically approving every transaction.
+
+The model is designed as a **review-prioritization tool, not an automatic blocking system**.
 
 A reproducible study of whether a score should take a card-not-present transaction out of the automatic-approval path. The book is synthetic, the features see only the past, and the test window is scored once.
 
