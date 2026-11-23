@@ -7,6 +7,48 @@ This project evaluates whether a risk score can prioritize card-not-present tran
 
 The model is designed as a **review-prioritization tool, not an automatic blocking system**.
 
+### Data & Validation
+
+- Synthetic card-not-present transaction data
+- 120-day simulated transaction history
+- 20 point-in-time model features
+- Chronological train, validation, and locked-test windows
+- Validation-based model and threshold selection
+- Final performance evaluated on the held-out test window.
+- ### Decision Framework
+
+The analytical objective is to minimize:
+
+**Total Loss = Missed Fraud Amount + Review Cost**
+
+A missed fraudulent transaction incurs its transaction amount as modelled loss.
+
+Every reviewed transaction incurs an assumed **$8 review cost**.
+
+The decision framework therefore balances fraud prevention against the operational burden of reviewing legitimate transactions.
+
+### Locked-Test Result
+
+The validation-selected histogram gradient boosting policy used a risk threshold of approximately **0.129**.
+
+On the locked test window:
+
+- **39,217 transactions**
+- **253 fraudulent transactions**
+- **398 transactions sent for review**
+- **80.6% fraud recall**
+- **93.2% of fraudulent transaction value captured**
+- **51.3% precision**
+- **$43,258.68 modelled loss under the approve-all baseline**
+- **$6,137.62 modelled loss under the selected review policy**
+- **$37,121.06 modelled loss reduction versus approve-all**
+
+The estimated loss reduction applies only to this **synthetic dataset and the documented cost assumptions**. It represents modelled cost avoidance, not realized business savings.
+### Key Limitation
+
+The synthetic environment does not represent a live fraud portfolio or adaptive attacker behavior.
+
+The analysis therefore demonstrates **decision methodology, cost-sensitive evaluation, and validation discipline**, not production fraud-detection performance.
 A reproducible study of whether a score should take a card-not-present transaction out of the automatic-approval path. The book is synthetic, the features see only the past, and the test window is scored once.
 
 On the locked test window, the policy chosen on validation is gradient boosting at a score threshold of 0.129. It reviews 13.3 transactions a day, catches 80.6% of frauds and 93.2% of fraud amount, and is right on 51.3% of alerts. Loss falls by $37,121 versus approving every transaction (95% day-bootstrap interval $29,958 to $43,688). It does not catch camouflage fraud, and the score is too high among the alerts it does raise (mean score 62.1% against a 51.3% fraud rate).
